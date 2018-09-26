@@ -20,8 +20,12 @@ module.exports = app => {
         roleId: {
             type: Number,
             enum: [0, 1, 2]
-        }, // 角色id 0,超级管理员,1管理员,2 普通用户
+        }, // 角色id 0,普通用户,1管理员,2 超级管理员
         token: String, // 认证 token
+        forbidden: {
+            type: Boolean,
+            default: false
+        },
         lastSignInAt: {
             type: Date
         } // 上次登录时间

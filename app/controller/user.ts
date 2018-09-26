@@ -54,13 +54,8 @@ export default class User extends Controller {
 
     public async auth() {
         const {ctx, service} = this
-        let token = ctx.helper.getAccessToken(ctx)
-        let verifyData = await service.user.verifyToken(token)
-        if (verifyData.verify) {
-            let userInfo = await service.user.findById(verifyData.id)
-            return ctx.helper.success(ctx, userInfo)
-        } else {
-            return ctx.helper.error(ctx, user_code['auth_001']['code'], user_code['auth_001']['message'])
-        }
+        let userInfo = await service.user.findById(ctx.id)
+        return ctx.helper.success(ctx, userInfo)
     }
+
 }
