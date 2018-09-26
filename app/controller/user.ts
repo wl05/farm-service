@@ -51,10 +51,7 @@ export default class User extends Controller {
         return ctx.helper.success(ctx, {token})
     }
 
-    /**
-     * 认证
-     * @return {any}
-     */
+
     public async auth() {
         const {ctx, service} = this
         let token = ctx.helper.getAccessToken(ctx)
