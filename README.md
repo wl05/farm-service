@@ -1,33 +1,22 @@
-# hackernews-async-ts
+# farm-service
+this is the server of [farm-front](https://github.com/antbaobao/farm-front)
 
-[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
+this is the first time for me to use egg.js,
+there might be some bugs in my code,I would appreciate it if you could help me find the mistakes
+
 
 ## QuickStart
 
 ### Development
 
 ```bash
+# first of all, start mongodb
+$ mongod
+# start the server
 $ npm i
 $ npm run dev
-$ open http://localhost:7001/
 ```
 
-Don't tsc compile at development mode, if you had run `tsc` then you need to `npm run clean` before `npm run dev`.
-
-### Deploy
-
-```bash
-$ npm run tsc
-$ npm start
-```
-
-### Npm Scripts
-
-- Use `npm run lint` to check code style
-- Use `npm test` to run unit test
-- se `npm run clean` to clean compiled js at development mode once
-
-### Requirement
-
-- Node.js 8.x
-- Typescript 2.8+
+## Technology stack
+* mongodb
+* egg.js
