@@ -26,9 +26,28 @@ module.exports = app => {
             type: Boolean,
             default: false
         },
-        lastSignInAt: {
+        role: { // 用户权限
+            type: Schema.ObjectId, ref: 'Roles'
+        },
+        bills: [{ // 账单
+            type: Schema.ObjectId,
+            ref: 'Bills',
+        }],
+        createAt: { // 创建时间
+            type: Date,
+            default: Date.now
+        },
+        updatedAt: { // 更新时间
             type: Date
-        } // 上次登录时间
+        },
+        deletedAt: { // 删除时间
+            type: Date
+        },
+        status: { // 状态
+            type: Number,
+            enum: [0, 1, 2] // 0存在 1更新，2 删除
+        }
+
     }, {versionKey: false});
-    return mongoose.model('User', UserSchema);
+    return mongoose.model('Users', UserSchema);
 }

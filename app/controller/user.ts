@@ -47,7 +47,7 @@ export default class User extends Controller {
         }
         // create token ant send token
         let token = service.user.createToken({id: existUsers.id, phone: existUsers.phone})
-        await service.user.updateOne(existUsers.id, {token, lastSignInAt: Date.now()})
+        await service.user.updateOne(existUsers.id, {token, updatedAt: Date.now()})
         return ctx.helper.success(ctx, {token})
     }
 

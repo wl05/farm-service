@@ -2,12 +2,18 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg'; // Make sure ts to import egg declaration at first
+import Bills from '../../../app/model/bills';
 import Parts from '../../../app/model/parts';
-import User from '../../../app/model/user';
+import Permissions from '../../../app/model/permissions';
+import Roles from '../../../app/model/roles';
+import Users from '../../../app/model/users';
 
 declare module 'egg' {
   interface IModel {
+    Bills: ReturnType<typeof Bills>;
     Parts: ReturnType<typeof Parts>;
-    User: ReturnType<typeof User>;
+    Permissions: ReturnType<typeof Permissions>;
+    Roles: ReturnType<typeof Roles>;
+    Users: ReturnType<typeof Users>;
   }
 }

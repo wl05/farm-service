@@ -1,21 +1,21 @@
 const Service = require('egg').Service
 const jwt = require('jsonwebtoken');
 
-class UserService extends Service {
+class UsersService extends Service {
     async create(user) {
-        return await this.ctx.model.User.create(user)
+        return await this.ctx.model.Users.create(user)
     }
 
     async findById(_id) {
-        return await this.ctx.model.User.findOne({_id})
+        return await this.ctx.model.Users.findOne({_id})
     }
 
     async checkExist(phone, password) {
-        return await this.ctx.model.User.findOne({phone, password})
+        return await this.ctx.model.Users.findOne({phone, password})
     }
 
     async updateOne(_id, newData) {
-        return await this.ctx.model.User.updateOne({_id}, newData)
+        return await this.ctx.model.Users.updateOne({_id}, newData)
     }
 
     createToken(data) {
@@ -23,4 +23,4 @@ class UserService extends Service {
     }
 }
 
-module.exports = UserService
+module.exports = UsersService
