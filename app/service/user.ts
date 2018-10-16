@@ -6,16 +6,24 @@ class UsersService extends Service {
         return await this.ctx.model.Users.create(user)
     }
 
+    async find() {
+        return await this.ctx.model.Users.find()
+    }
+
     async findById(_id) {
         return await this.ctx.model.Users.findOne({_id})
     }
 
-    async checkExist(phone, password) {
-        return await this.ctx.model.Users.findOne({phone, password})
+    async updateById(_id, newData) {
+        return await this.ctx.model.Users.updateOne({_id}, newData)
     }
 
-    async updateOne(_id, newData) {
-        return await this.ctx.model.Users.updateOne({_id}, newData)
+    async findUserByPhone(phone) {
+        return await this.ctx.model.Users.findOne({phone})
+    }
+
+    async checkExist(phone, password) {
+        return await this.ctx.model.Users.findOne({phone, password})
     }
 
     createToken(data) {

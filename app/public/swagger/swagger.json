@@ -1,0 +1,413 @@
+{
+    "openapi": "3.0.0",
+    "servers": [
+        {
+            "url": "http://localhost:7001/v1"
+        }
+    ],
+    "info": {
+        "description": "this is farm API.",
+        "version": "1.0.0",
+        "title": "Farm API"
+    },
+    "tags": [
+        {
+            "name": "ErrorCode"
+        },
+        {
+            "name": "Users"
+        },
+        {
+            "name": "Roles"
+        },
+        {
+            "name": "Permissions"
+        },
+        {
+            "name": "Login"
+        },
+        {
+            "name": "Auth"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/error_map": {
+            "get": {
+                "tags": [
+                    "ErrorCode"
+                ],
+                "summary": "get error code",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "get user list",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "create user",
+                "parameters": [],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "default": "123456"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "sex": {
+                                        "type": "number",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ],
+                                        "description": "0 is male, 1 is female"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "remark": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "description": "role id",
+                                        "default": "5bae56567c027a44fba2d23a"
+                                    },
+                                    "creator": {
+                                        "type": "string",
+                                        "default": "5bae56567c027a44fba2d23a"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "description": "",
+                    "required": true
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "get user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "the user id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "5bae56567c027a44fba2d23a"
+                        }
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "delete user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "update user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/roles": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "get role list",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "create role",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissions",
+                        "in": "query",
+                        "description": "permissions",
+                        "required": true,
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "remark",
+                        "in": "query",
+                        "description": "remark",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/roles/:id": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "get user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "delete user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "update user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/permissions": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "get role list",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "create role",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "permissions",
+                        "in": "query",
+                        "description": "permissions",
+                        "required": true,
+                        "schema": {
+                            "type": "array"
+                        }
+                    },
+                    {
+                        "name": "remark",
+                        "in": "query",
+                        "description": "remark",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/permissions/:id": {
+            "get": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "get user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "delete user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Permissions"
+                ],
+                "summary": "update user by id",
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "user login",
+                "parameters": [],
+                "responses": {
+                    "user_001": {
+                        "description": "invalid parameter"
+                    },
+                    "user_003": {
+                        "description": "user not exist"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "default": "18381089466"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "default": "123456"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "description": "",
+                    "required": true
+                }
+            }
+        },
+        "/auth": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "auth user",
+                "responses": {
+                    "auth_002": {
+                        "description": "auth failed"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ]
+}

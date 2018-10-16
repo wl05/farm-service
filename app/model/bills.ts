@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 module.exports = app => {
-    const mongoose = app.mongoose;
-    const Schema = mongoose.Schema;
+    const mongoose = app.mongoose
+    const Schema = mongoose.Schema
     const PostSchema = new Schema({
         creator: { // 账单创建人
             type: Schema.ObjectId,
@@ -29,9 +29,10 @@ module.exports = app => {
             default: Date.now
         },
         payStatus: { // 付款状态
-            type: Number,
+            type: String,
             required: true,
-            enum: [0, 1, 2] // 0： 正在进行,1：已付款，2：赊账
+            enum: ['0', '1', '2'],// 0： 正在进行,1：已付款，2：赊账
+            default: '0'
         },
         createAt: {
             type: Date,
@@ -43,10 +44,11 @@ module.exports = app => {
         deletedAt: {
             type: Date
         },
-        status: {
-            type: Number,
-            enum: [0, 1, 2] // 0存在 1更新，2 删除
+        status: { // 状态
+            type: String,
+            enum: ['0', '1', '2'], // 0存在 1更新，2 删除
+            default: '0'
         }
-    }, {versionKey: false});
-    return mongoose.model('Bills', PostSchema);
+    }, {versionKey: false})
+    return mongoose.model('Bills', PostSchema)
 }
